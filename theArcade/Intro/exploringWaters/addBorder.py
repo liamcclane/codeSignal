@@ -16,29 +16,23 @@
 
 def addBorder(picture):
     
-    output = ['','']
-    picD = {}
-    
-    # fill the dictonary and output
-    for i in range(len(picture)):
-        picD[i] = picture[i]
-        output.append('')
-    print(picD)
+    output = []
 
-    print(len(output))
-    print(len(picture))
-    
-    for i in range(len(output)):
-        for j in range(len(picture)):
-            if i==0 or  i==len(output):
-                output[i]+='*'
-            else:
-                if j == 0 or j == len(picture):
-                    output[i]+='*'
+    s = "**"
+    for i in range(len(picture)):
+        s += "*"
+
+    output.append(s)
+
+    # fill the dictonary and output
+    for val in picture:
+        
+        output.append("*" + val + "*")
+
+        print(output)
+
+    output.append(s)
 
     return output
-            
-
 
 print(addBorder(['abc','def']))
-print('lask'+'*')
