@@ -41,61 +41,35 @@
 
     # true if a and b are similar, false otherwise.
 
-
-def areSimilarLia(a,b):
-
-    # do this check first since it is gaurenteed that the two arrays are of the same lenght
-    notMatchingCount = 0
+def areSimilarAgain(a,b):
+    
+    count = 0 
+    antiCount = 0 
+    indexOfSim = []
+    
     for i in range(len(a)):
-        if a[i] is not b[i]:
-            notMatchingCount += 1
-
-    if notMatchingCount > 2:
-        return False
-    
-    # this does quantity checking
-    dictA = {}
-    dictB = {}
-
-    # this does element checking and fills in the dictonaries
-    for val in a:
-        print(val, 'in a')
-        if val not in b:
-            return False
-        if val not in dictA:
-            dictA[val] = 1
+        if a[i] != b[i]:
+            indexOfSim.append(i)
+            count += 1
         else:
-            dictA[val] += 1
+            antiCount += 1 
     
-    for val in b:
-        print(val ,'in b')
-        if val not in a:
-            return False
-        if val not in dictB:
-            dictB[val] = 1
-        else:
-            dictB[val] += 1
-
-    print(dictA)
-    print(dictB)
-
-    # now we need to check if the matching keys in the dictonaries match
-    for key in dictA:
-        print("dictA[",key,"] is not dictB[",key,"]", dictA[key] ,":",dictB[key])
-        if dictA[key] is not dictB[key]:
-            return False
-
+    if count == 2: 
+        if a[indexOfSim[0]] == b[indexOfSim[1]] and a[indexOfSim[1]] == b[indexOfSim[0]]:
+            return True
     
-    return True
-
-# print(areSimilarLia([1,2,3],[2,4,1]),"line 84") # returns False
-# print(areSimilarLia([1,1,2],[2,2,1]),"line 85") # returns False
-# print(areSimilarLia([1,1,1,1,3],[3,3,3,3,1]),"line 86") # returns False
-# print(areSimilarLia([3,4,6],[4,6,3])) # returns False
-# print(areSimilarLia([3,4,6],[4,6,3])) # returns False
-print(areSimilarLia([832, 998, 148, 570, 533, 561, 894, 147, 455, 279],
-                    [832, 998, 148, 570, 533, 561, 455, 147, 894, 279])) # returns False
-
+    if antiCount == len(a):
+        return True
+    
+    return False
+# print(areSimilarAgain([1,2,3],[2,4,1]),"line 84") # returns False
+# print(areSimilarAgain([1,1,2],[2,2,1]),"line 85") # returns False
+# print(areSimilarAgain([1,1,1,1,3],[3,3,3,3,1]),"line 86") # returns False
+# print(areSimilarAgain([3,4,6],[4,6,3])) # returns False
+# print(areSimilarAgain([3,4,6],[4,6,3])) # returns False
+# print(areSimilarAgain([832, 998, 148, 570, 533, 561, 894, 147, 455, 279],
+#                       [832, 998, 148, 570, 533, 561, 455, 147, 894, 279])) # returns False
+print(areSimilarAgain([1,2,2],[2,1,1]))
 # hi Toan can you see me live typing?
 # yes that is cool how can we comment to each other?
 
