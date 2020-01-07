@@ -29,7 +29,7 @@ console.log('adjaentElementsProducts([3,6,-2,-5,7,3]) returns ' + adjacentElemen
 
 // this algorithm has a visual attached inside the folder to show what is happening for various n's
 function shapeArea(n) {
-  
+
   let a = 1; // the base case
 
   if (n > 1) {
@@ -48,20 +48,20 @@ function shapeArea(n) {
 let x = [2, 5, 6, 8, 1, 3]
 console.log(makeArrayConsecutive2(x));
 function makeArrayConsecutive2(x) {
-  
+
   let min = statues[0], max = statues[0]; // initalizing max and min
-  
+
   for (num of statues) {
-  
+
     if (num > max) {
       max = num
     }
     if (num < min) {
       min = num
     }
-  
+
   }
-  
+
   distance = max - min + 1
   result = distance - statues.length
   return distance - statues.length
