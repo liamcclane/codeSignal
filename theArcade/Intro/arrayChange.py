@@ -37,7 +37,7 @@ print(arrayChange([1,1,1]))
 # print("should output 13")
 # # becuase [2, 3, 3(+1), 5, 5(+1), 5(+2), 4(+4), 12, 12(+1), 10(+4), 15]
 # print(arrayChange([2, 3, 3, 5, 5, 5, 4, 12, 12, 10, 15]))
-\
+
 # print("should output 25559")
 # # becuase[3122, -645(+3768‬), 2616(+508‬), 13213, -8069(+21283‬)]
 # print(arrayChange([3122, -645, 2616, 13213, -8069]))
