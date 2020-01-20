@@ -36,6 +36,7 @@ function ListNode(x) {
     this.value = x;
     this.next = null;
 }
+
 function removeKFromListAnswer(l, k) {
     let dummy = new ListNode();
     dummy.next = l;
@@ -51,6 +52,7 @@ function removeKFromListAnswer(l, k) {
 
     return dummy.next;
 }
+
 // below code almost ran, but had an off by one error.
 function removeKFromList(l, k) {
     // let result = new ListNode(1);
