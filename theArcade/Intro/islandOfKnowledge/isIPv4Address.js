@@ -24,15 +24,23 @@
  * @returns {boolean} 
  */
 function isIPv4Address(inputString) {
-    if(inputString.length < 11) return false;
-    let count = 0;
-    let start = 0;
-    let stop = 0;
-    for(let i=0; i<inputString.length; i++){
-        if(inputString[i] === '.') count ++;
-        if(count==1) start = i;
-        if(count==2) stop = i;
-    }
-    return false
+    let splitArr = inputString.split(".");
+    if (splitArr.length != 4) { return false }
+    for (let ele of splitArr) {
+        if (ele.match(/[a-z]/i)) { return false }
+        if (parseInt(ele) > 255) { return false }
+        if (ele === "") { return false }
+        if (parseInt(ele) == 0 && ele.length > 1) { return false; }
+        if (parseInt(ele) < 100 && ele.length > 2) { return false }
+        if (parseInt(ele) < 10 && ele.length > 1) { return false }
+    };
+    return true
 }
+// false
 console.log(isIPv4Address("1.4e453454.444"));
+console.log(isIPv4Address("13.432.444"));
+console.log(isIPv4Address("172.316.254.1"));
+console.log(isIPv4Address("01.233.161.131"));
+// true
+console.log(isIPv4Address("0.254.255.0"));
+console.log(isIPv4Address("172.16.254.1"));
