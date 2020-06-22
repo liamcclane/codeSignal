@@ -11,6 +11,12 @@
  *     [false, true, false],
  *     [false, false, false]
  * ]
+ * Output : [
+ *              [1,2,1],
+ *              [2,1,1],
+ *              [1,1,1]
+ *          ]
+ *
  */
 let ex1 = [
     [true, false, false],
@@ -24,14 +30,23 @@ let ex1 = [
  * @param {number[][]} matrix 
  */
 function minesweeper(matrix) {
+    // const printMatrix = m => {
+    //     let ans = [];
+    //     for(let arr of matrix) {
+    //         let innerArr = [];
+    //         for(let b of arr) {
+    //             innerArr.push(b ? 1 : 0);
+    //         }
+    //         ans.push(innerArr);
+    //     }
+    //     console.log(ans);
+    // }
+    // printMatrix(matrix);
 
     const countNeighboringBombs = (matrix, i, j) => {
         let count = 0;
-        // check itself 
-        // matrix[i][j] ? count += 1 : ""
         // above
         i + 1 >= matrix.length ? " " : matrix[i + 1][j] ? count += 1 : ""
-        // if (matrix[i + 1][j]) count += 1
         // below
         i - 1 < 0 ? " " : matrix[i - 1][j] ? count += 1 : ""
         // left
@@ -40,24 +55,21 @@ function minesweeper(matrix) {
         j + 1 >= matrix[i].length ? " " : matrix[i][j + 1] ? count += 1 : ""
 
         // down right
-        if (i + 1 < matrix.length && j - 1 > 0) {
+        if (i + 1 < matrix.length && j - 1 >= 0) {
             if (matrix[i + 1][j - 1]) count++;
         }
         // down left
         if (i + 1 < matrix.length && j + 1 < matrix[i].length) {
             if (matrix[i + 1][j + 1]) count++;
         }
-
         // up left
-        if (i - 1 > 0 && j - 1 < 0) {
+        if (i - 1 >= 0 && j - 1 >= 0) {
             if (matrix[i - 1][j - 1]) count++;
         }
         // up right 
-        if (i - 1 > 0 && j + 1 < matrix[i].length) {
+        if (i - 1 >= 0 && j + 1 < matrix[i].length) {
             if (matrix[i - 1][j + 1]) count++;
         }
-
-
         return count;
     }
 
@@ -73,8 +85,19 @@ function minesweeper(matrix) {
 
     return ans;
 }
+let ex3 = [
+    [true, false, false, true],
+    [false, false, true, false],
+    [true, true, false, true]
+]
+// console.log(minesweeper(ex3));
+// console.log(minesweeper([
+//     [true, false, false],
+//     [false, true, false],
+//     [false, false, false],
+// ]));
 console.log(minesweeper([
-    [true, false, false],
-    [false, true, false],
-    [false, false, false],
+    [true, true, true],
+    [true, false, true],
+    [true, true, true],
 ]))
