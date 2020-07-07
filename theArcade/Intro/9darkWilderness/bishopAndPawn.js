@@ -12,23 +12,20 @@
 function bishopAndPawn(bishop, pawn) {
 
     let row = "abcdefgh";
-    
-    // let listOfMoves = [];
 
-    // let bRow = bishop[0], bHeight = Number(bishop[1]);
+    let diffRow = row.indexOf((bishop[0])) - row.indexOf((pawn[0]));
+    let colDiff = Number(bishop[1]) - Number(pawn[1]);
 
-    // for (let rowMove = row.indexOf(bRow),
-    //     heightMove = bHeight,
-    //     i = 1; i <= 8;
-    //     i++, rowMove++, heightMove++) {
-    //     if (rowMove == row.length) { rowMove = 1 }
-    //     if (heightMove == row.length+1) { heightMove = 1 }
-    //     listOfMoves.push(row[rowMove] + "" + heightMove);
-    // }
+    diffRow = Math.abs(diffRow)
+    colDiff = Math.abs(colDiff)
 
-    // return listOfMoves;
+    console.log(`diffRow ${diffRow}`);
+    console.log(`colDiff ${colDiff}`);
 
+    return diffRow === colDiff ? true : false
 }
 
+
 console.log(bishopAndPawn("d4", "c3"));
+console.log();
 console.log(bishopAndPawn("a1", "c3"));
