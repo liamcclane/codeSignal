@@ -31,59 +31,87 @@
  * @returns {boolean}
  */
 function isBeautifulString(inputString) {
-
+    let alphabet = "abcdefghijklmnopqrstuvwxyz";
     let dict = {};
-
-    for (let letter of inputString) {
-        if (!(letter in dict)) { dict[letter] = 1 }
-        else { dict[letter] += 1 }
+    for (let letter of alphabet) {
+        dict[letter] = 0;
     }
-
+    // console.log(dict);
+    for (let letter of inputString) {
+        dict[letter] += 1;
+    }
+    // console.log(dict);
     let sortedArr = Object.entries(dict).sort((a, b) => {
-        if (a[0] > b[0]) { return 1; }
-        if (a[0] < b[0]) { return -1; }
+        if (a[0] > b[0]) return 1
+        if (a[0] < b[0]) return -1
         return 0;
-    });
-
+    })
     // console.log(sortedArr);
-
-    for (let i = 0; i < sortedArr.length - 1; i++) {
-        if (sortedArr[i][1] >= sortedArr[i + 1][1]) {
-        } else {
-            return false;
-        }
+    for (let i = 1; i < 26; i++) {
+        // console.log(sortedArr[i]);
+        if (sortedArr[i - 1][1] < sortedArr[i][1]) return false
     }
     return true;
 }
-// Test Case 1
-console.log(isBeautifulString("bbbaacdafe")); // true
-console.log();
 
-// Test Case 6
-console.log(isBeautifulString("abcdefghijklmnopqrstuvwxyz")); // true
-console.log();
+const allTrue = () => {// Test Case 1
+    console.log(isBeautifulString("bbbaacdafe")); // true
+    console.log();
 
-// Test Case 9
-console.log(isBeautifulString("zaa")); // true
-console.log();
+    // Test Case 6
+    console.log(isBeautifulString("abcdefghijklmnopqrstuvwxyz")); // true
+    console.log();
 
-// Test Case 2
-console.log(isBeautifulString("aabbb")); // false 
-console.log();
+}
+const allFalse = () => {
+    // Test Case 9
+    console.log(isBeautifulString("zaa")); // false
+    console.log();
 
-// Test Case 3
-console.log(isBeautifulString("bbc")); // false
-console.log();
+    // Test Case 2
+    console.log(isBeautifulString("aabbb")); // false 
+    console.log();
 
-// Test Case 4
-console.log(isBeautifulString("bbbaa")); // false
-console.log();
+    // Test Case 3
+    console.log(isBeautifulString("bbc")); // false
+    console.log();
 
-// Test Case 5
-console.log("5",isBeautifulString("abcdefghijklmnopqrstuvwxyzz")); // false
-console.log();
+    // Test Case 4
+    console.log(isBeautifulString("bbbaa")); // false
+    console.log();
+
+    // Test Case 5
+    console.log("5", isBeautifulString("abcdefghijklmnopqrstuvwxyzz")); // false
+    console.log();
 
 
-// Test Case 10
-console.log("10",isBeautifulString("zyy")); // false
-console.log();
+    // Test Case 10
+    console.log("10", isBeautifulString("zyy")); // false
+    console.log();
+}
+// allTrue();
+allFalse();
+
+// DEAD CODE
+// let dict = {};
+
+// for (let letter of inputString) {
+    //     if (!(letter in dict)) { dict[letter] = 1 }
+    //     else { dict[letter] += 1 }
+    // }
+
+    // let sortedArr = Object.entries(dict).sort((a, b) => {
+        //     if (a[0] > b[0]) { return 1; }
+        //     if (a[0] < b[0]) { return -1; }
+        //     return 0;
+        // });
+
+        // // console.log(sortedArr);
+
+// for (let i = 0; i < sortedArr.length - 1; i++) {
+//     if (sortedArr[i][1] >= sortedArr[i + 1][1]) {
+//     } else {
+//         return false;
+//     }
+// }
+// return true;
