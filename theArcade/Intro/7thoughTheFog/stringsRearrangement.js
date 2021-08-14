@@ -35,4 +35,39 @@
  */
 function stringsRearrangement(inputArray) {
 
+    const checkArrangment = (arr) => {
+        // console.log(arr +  " arr");
+        for(let front = 1, back = 0; front < arr.length; front++, back++) {
+            let frontStr = arr[front], backStr = arr[back];
+            let differenceCount = 0;
+            for(let i = 0; i < frontStr.length; i++) {
+                if(frontStr[i] != backStr[i]) {
+                    differenceCount++;
+                }
+            }
+            // console.log(differenceCount + " differenceCount\n")
+            if(differenceCount != 1) {return false;}
+        }
+        return true;
+    }
+    const permutator = (inputArr) => {
+        let result = [];
+        const permute = (arr, m = []) => {
+            if (arr.length === 0) {
+                // result.push(m);
+                return checkArrangment(m);
+            } else {
+                for (let i = 0; i < arr.length; i++) {
+                    let curr = arr.slice();
+                    let next = curr.splice(i, 1);
+                    if(permute(curr.slice(), m.concat(next))){
+                        return true;
+                    }
+                }
+                return false;
+            }
+        };
+        return permute(inputArr)
+    };
+    return permutator(inputArray);
 }
