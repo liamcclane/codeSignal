@@ -8,22 +8,13 @@
  * @returns {boolean}
  */
 function areSimilar(a, b) {
-    let pair = [], len = a.length, hasValidSwap = false;
-    for (let i = 0; i < len; i++) {
-        if (a[i] != b[i]) {
-            if (hasValidSwap) return false;
-            if (pair.length == 0) {
-                pair.push({ind: i, aVal: a[i], bVal: b[i]});
-            } else {
-                let pastData = pair.pop();
-                if(b[i] == pastData['aVal'] && a[i] == pastData['bVal']) {
-                    hasValidSwap = true;
-                } else {
-                    return false;
-                }
-            }
-            
+    let count = 0, prev = inputArray[0], len = inputArray.length;
+    for(let i = 1; i < len; i++) {
+        if(inputArray[i-1] >= inputArray[i]) {
+            let diff = (inputArray[i-1] - inputArray[i]) + 1;
+            count += diff;
+            inputArray[i] = 1 + inputArray[i - 1];
         }
     }
-    return true;
+    return count;
 }
